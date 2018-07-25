@@ -34,10 +34,10 @@ If ($RemoveNetworkPane -eq "true")
 # Remove 3d Objects Icon
 If ($Remove3d -eq "true")
 {
-    	Write-Output "Removing 3d Objects Icon from the Navigation Pane";
+    Write-Output "Removing 3d Objects Icon from the Navigation Pane";
 	New-PSDrive -Name "HKLM" -PSProvider "Registry" -Root "HKEY_LOCAL_MACHINE"
 	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -Force
-    	Remove-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -Force
+    Remove-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -Force
 	Remove-PSDrive -Name "HKLM"
 }
 
@@ -52,12 +52,12 @@ If ($RemoveEdgeIcon -eq "true")
 # Remove Intel Tray and context icons
 If ($RemoveIntelIcons -eq "true")
 {
-    	Write-Output "Removing Intel Icons";
+    Write-Output "Removing Intel Icons";
 	New-PSDrive -Name "HKCR" -PSProvider "Registry" -Root "HKEY_CLASSES_ROOT"
 	Remove-Item -Path "HKCR:\Directory\Background\shellex\ContextMenuHandlers\igfxcui" -Force
-    	Remove-Item -Path "HKCR:\Directory\Background\shellex\ContextMenuHandlers\igfxDTCM" -Force
+    Remove-Item -Path "HKCR:\Directory\Background\shellex\ContextMenuHandlers\igfxDTCM" -Force
 	Remove-PSDrive -Name "HKCR"
-    	New-PSDrive -Name "HKLM" -PSProvider "Registry" -Root "HKEY_LOCAL_MACHINE"
+    New-PSDrive -Name "HKLM" -PSProvider "Registry" -Root "HKEY_LOCAL_MACHINE"
 	New-ItemProperty -Path "HKLM:\SOFTWARE\Intel\Display\igfxcui\igfxtray\TrayIcon" -Name "ShowTrayIcon" -PropertyType DWORD -Value 0 -Force
 	Remove-PSDrive -Name "HKLM"
 }
@@ -84,9 +84,9 @@ If ($DeleteScheduledTasks -eq "true")
 	Disable-ScheduledTask -TaskName "\Microsoft\Windows\Shell\FamilySafetyRefreshTask"
 	Disable-ScheduledTask -TaskName "\Microsoft\Windows\Windows Error Reporting\QueueReporting"
 	Disable-ScheduledTask -TaskName "\Microsoft\XblGameSave\XblGameSaveTask"
-    	Disable-ScheduledTask -TaskName "\Microsoft\Windows\Workplace Join\Automatic-Device-Join"
-    	Disable-ScheduledTask -TaskName "\Microsoft\Windows\Workplace Join\Recovery-Check"
-    	Disable-ScheduledTask -TaskName "\Microsoft\XblGameSave\XblGameSaveTask"
+    Disable-ScheduledTask -TaskName "\Microsoft\Windows\Workplace Join\Automatic-Device-Join"
+    Disable-ScheduledTask -TaskName "\Microsoft\Windows\Workplace Join\Recovery-Check"
+    Disable-ScheduledTask -TaskName "\Microsoft\XblGameSave\XblGameSaveTask"
 }
 
 # Disable OneDrive
