@@ -1,3 +1,10 @@
+
+<#	
+	.DESCRIPTION
+		Searches for computers in OU, outputs CSV with machine name, manufacturer, model and serial number.
+        Change -SearchBase to desired OU
+#>
+
 Get-ADComputer -Filter * -SearchBase 'OU=Tech,OU=Laptops,DC=Domain,DC=local' | ForEach {
 
     $cs = Get-WmiObject Win32_ComputerSystem -ComputerName $_.Name
